@@ -22,17 +22,33 @@ int binarySearch(int arr[], int size, int target) {
     return -1; // Target not found
 }
 
+// sort a array in acsending order array
+
+void sortArray(int arr[], int size) {
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = 0; j < size - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
 int main() {
     int n, target;
     cout << "Enter the number of elements in the array: ";
     cin >> n;
 
     int arr[n];
-    cout << "Enter the elements of the array (sorted in ascending order): ";
+    cout << "Enter the elements of the array: ";
     for (int i = 0; i < n; i++) {
         cin >> arr[i];
-    }
-
+    } 
+    // Sort the array before performing binary search
+    sortArray(arr, n);  
+    
     cout << "Enter the target element to search: ";
     cin >> target;
 
