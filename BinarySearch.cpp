@@ -85,11 +85,13 @@ int main() {
 
      string str ;
     cin.ignore(); // Ignore the newline character left in the buffer
+    cout << "Enter a string to search in: ";
     getline(cin, str);
 
     // sort the string in acsending order
-    for(int i = 0; i<str.length() - 1 ;i++){
-        for(int j = 0; j<str.length() - i - 1 ;j++){
+    size_t strLen = str.length();
+    for(size_t i = 0; i < strLen - 1; i++){
+        for(size_t j = 0; j < strLen - i - 1; j++){
             if(str[j] > str[j+1]){
                 swap(str[j], str[j+1]);
             }
@@ -100,7 +102,7 @@ int main() {
     cout << "Enter the target character to search in the string: "; 
     char targetChar;
     cin >> targetChar;
-    int charIndex = binarySearch(str.c_str(), str.length(), targetChar);
+    int charIndex = binarySearch(str.c_str(), (int)strLen, targetChar);
     if (charIndex != -1) {
         cout << "Character found at index: " << charIndex << endl;
     } else {
