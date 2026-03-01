@@ -39,5 +39,14 @@ int main(){
     }
     cout<<"Total amount of all items is : "<<total_amount<<endl;
 
+
+int max_price_index = 0;
+    for (int i = 1; i < n; i++) {
+        if (arr[i].price > arr[max_price_index].price) {
+            max_price_index = i;
+        }
+    }   
+    cout << "Item with the highest price: " << arr[max_price_index].name << " (Price: " << arr[max_price_index].price << ")" << endl;
+    
     return 0;
 }
