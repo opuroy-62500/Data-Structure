@@ -23,13 +23,13 @@ bool push(int x){
     return true;
 }
 
-bool pop(int &x){
+bool pop(int x){
     if(isEmpty()){
         cout<<"Stack is empty"<<endl;
         return false;
     }
+    x=stack[top-1];
     top--;
-    x=stack[top];
     return true;
 }
 
@@ -81,7 +81,6 @@ int main(){
                 int topEl = topElement();
                 if(topEl != -1)
                     cout<<"Top element: "<<topEl<<endl;
-                
                 break;
             }
             case 4:{
@@ -93,7 +92,6 @@ int main(){
                     cout<<"Stack is empty"<<endl;
                 }else
                     cout<<"Stack is not empty"<<endl;
-                
                 break;
             }
             case 6:
