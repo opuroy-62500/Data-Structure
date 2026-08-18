@@ -7,7 +7,8 @@ using namespace std;
 struct Node {
     char ch;
     int freq;
-    Node *left, *right;
+    Node* left;
+    Node* right;
 
     Node(char c, int f) {
         ch = c;
@@ -40,13 +41,13 @@ void generateCodes(Node* root, string code) {
 }
 
 // Huffman Encoding
-void Huffman(int n, int freq[]) {
+void Huffman(int n, char chars[], int freq[]) {
 
     priority_queue<Node*, vector<Node*>, Compare> pq;
 
     // Create leaf nodes
     for (int i = 0; i < n; i++) {
-        pq.push(new Node('A' + i, freq[i]));
+        pq.push(new Node(chars[i], freq[i]));
     }
 
     // Build Huffman Tree
@@ -58,7 +59,7 @@ void Huffman(int n, int freq[]) {
         Node* right = pq.top();
         pq.pop();
 
-        // Create new internal node
+        // Create internal node
         Node* parent = new Node('\0', left->freq + right->freq);
 
         parent->left = left;
@@ -83,16 +84,20 @@ int main() {
     cout << "Enter number of characters: ";
     cin >> n;
 
+    char chars[n];
     int freq[n];
 
-    cout << "Enter frequencies of characters:\n";
+    cout << "\nEnter characters and their frequencies:\n";
 
     for (int i = 0; i < n; i++) {
-        cout << char('A' + i) << " : ";
+        cout << "\nCharacter " << i + 1 << ": ";
+        cin >> chars[i];
+
+        cout << "Frequency of '" << chars[i] << "': ";
         cin >> freq[i];
     }
 
-    Huffman(n, freq);
+    Huffman(n, chars, freq);
 
     return 0;
 }
